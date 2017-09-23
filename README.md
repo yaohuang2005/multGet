@@ -24,10 +24,7 @@ The reasons are:
 
 So the diagram is:
 
-
----------------      -----------------------------------     -------------------------------------
-|MultiGet(main)| -> |FileChunkDownloader(mutilthreaded)| -> |writer(singleton with stream buffer) |
----------------      -----------------------------------     -------------------------------------
+ MultiGet(main) -> FileChunkDownloader(mutilthreaded) -> writer(singleton with stream buffer) 
 
 
 ## build step:
