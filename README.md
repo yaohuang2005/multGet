@@ -25,20 +25,13 @@ The reasons are:
 So the diagram is:
 
 
-                    FileChunkDownloader (thread)  \
-                  /
-                    FileChunkDownloader (thread)   \
-                 /
-   MultiGet(main)                                     --> writer(singleton with stream buffer) --> file
-                 \
-                    FileChunkDownloader (thread)   /
-                   \
-                    FileChunkDownloader (thread)  /
+---------------      -----------------------------------     -------------------------------------
+|MultiGet(main)| -> |FileChunkDownloader(mutilthreaded)| -> |writer(singleton with stream buffer) |
+---------------      -----------------------------------     -------------------------------------
 
 
 ## build step:
 
-```
 $ cd cmamke-build-debug
 $ cmake ..
 $ make
@@ -48,6 +41,3 @@ $./multiGet -h
 $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar
 $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o receivedFile
 $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o receivedFile -s 1024
-
-```
-
