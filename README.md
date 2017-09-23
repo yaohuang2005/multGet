@@ -27,7 +27,7 @@ So the diagram is:
  MultiGet(main) -> FileChunkDownloader(mutilthreaded) -> writer(singleton with stream buffer) 
 
 
-## build step:
+## build step: (on MacOS)
 
 ```
 $ cd cmamke-build-debug
