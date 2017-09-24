@@ -30,7 +30,12 @@ So the diagram is:
 ## build step: (on MacOS)
 
 ```
-In your Linux-like OS terminal
+Pre-requirement libraries installation:
+(on my MacOS)
+brew install libcurl
+
+In terminal:
+
 $git clone https://github.com/yaohuang2005/multiGet.git
 $cd multiGet
 
