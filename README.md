@@ -21,15 +21,19 @@ The reasons are:
        glibc++ (for getopt)
        thread (for multithread)
 
+So the diagram is:
+
+ MultiGet(main) -> FileChunkDownloader(mutilthreaded) -> writer(singleton with stream buffer) 
+
 Assumption:
 Since this is a simple application,
 1. logging information is send to stdout, no ogging to file or syslog-ng ...
 2. configuration is read from command line, no conf property file is need
 
-
-So the diagram is:
-
- MultiGet(main) -> FileChunkDownloader(mutilthreaded) -> writer(singleton with stream buffer) 
+Feature:
+plus all requirements from the document, this application also has,
+1. input verification (url connection detect, size > 0)
+2. performance report
 
 
 ## build step: (on MacOS)

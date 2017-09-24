@@ -179,18 +179,20 @@ int main(int argc, char *argv[]) {
     // prepare chunk size for every chunkdownloader instance
     if (size > 0) {
         int base = 0;
+        const u_int16_t threadNum = 4;
         if (size > 4 * ONE_KB ) {  // file size > 4KB... or even > 4MB
-            int chunkSize = size / 4;
-            int remainder = size % 4;
+            int chunkSize = size / threadNum;   // average size for every every thread
+            int remainder = size % threadNum;   // add remainder to last thread, DO NOT LOSE DATA
 
+            // chunkSize must be <= 1MB, because totally, it only need to pull first 4M bytes
             if (chunkSize > ONE_MB) {  // means the file is > 4 MB
-                chunkSize = ONE_MB;    // only pull first 4M content
+                chunkSize = ONE_MB;
             }
 
             fileChunkDownloaderHead->initBaseRange(base, chunkSize);
             workers.push_back(std::move(fileChunkDownloaderHead));
 
-            for (int i = 1; i < 4; i++) {  // already have workder 0
+            for (int i = 1; i < threadNum; i++) {  // already have workder 0
                 workerID = i;
                 auto fileChunkReadeFollower = std::unique_ptr<FileChunkDownloader>(
                         new FileChunkDownloader(url, workerID, writer));
@@ -199,7 +201,7 @@ int main(int argc, char *argv[]) {
                 if (i < 3) {
                     fileChunkReadeFollower->initBaseRange(base, chunkSize);
                 } else {
-                    // last thread pull all the rest bytes, DO NOT LOSE data
+                    // plus average chunkSize, last thread pull all the rest bytes, DO NOT LOSE Data
                     fileChunkReadeFollower->initBaseRange(base, chunkSize + remainder);
                 }
                 workers.push_back(std::move(fileChunkReadeFollower));
@@ -207,7 +209,6 @@ int main(int argc, char *argv[]) {
         } else {  // file size is 1 ~ 4KB,
             // less than 4K, no need multithreads, one thread enough
            fileChunkDownloaderHead->initBaseRange(base, size);
-            // will decrease 1 in chunkDownloader
            workers.push_back(std::move(fileChunkDownloaderHead));
         }
 
@@ -232,7 +233,6 @@ int main(int argc, char *argv[]) {
         std::cout << "cannot get file chunk, the multiGet will exit" << std::endl;
         _exit(EXIT_SUCCESS);
     }
-
 
     // wait for threads finish
     for (int i = 0; i < threads.size(); i++){
