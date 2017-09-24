@@ -56,7 +56,7 @@ $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o receivedFile
 $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o receivedFile -s 1024
 
 
-Test result:
+Integration Test 1 result:
 ./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o test.txt
 .
 .
