@@ -30,6 +30,14 @@ So the diagram is:
 ## build step: (on MacOS)
 
 ```
+In your Linux-like OS terminal
+$git clone https://github.com/yaohuang2005/multiGet.git
+$cd multiGet
+
+The directory structure is:
+cmakefile.txt cmake-build-debug/ src/
+
+
 $ cd cmamke-build-debug
 $ cmake ..
 $ make
