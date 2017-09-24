@@ -103,7 +103,7 @@ the file has only 5689 byte, so we can only pull this size
 Received url file byte 5689
 
 
-You can verify the file content with:
+You can verify the file content with the content by:
 curl -O http://www.tehhayley.com/blog/2012/partial-http-downloads-with-curl/
 
 ```
