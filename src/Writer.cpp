@@ -31,7 +31,9 @@ void Writer::openBuffer()
 
 void Writer::closeBuffer()
 {
-    outfile_.close();
+    if (outfile_.is_open()) {
+        outfile_.close();
+    }
 }
 
 int Writer::getReceiveByte() {
