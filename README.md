@@ -19,7 +19,12 @@ The reasons are:
 3. Library dependency on Mac or Linux:
        libcurl (for http "get")
        glibc++ (for getopt)
-       pthread (for multithread)
+       thread (for multithread)
+
+Assumption:
+Since this is a simple application,
+1. logging information is send to stdout, no ogging to file or syslog-ng ...
+2. configuration is read from command line, no conf property file is need
 
 
 So the diagram is:
