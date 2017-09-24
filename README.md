@@ -33,13 +33,13 @@ So the diagram is:
 In your Linux-like OS terminal
 $git clone https://github.com/yaohuang2005/multiGet.git
 $cd multiGet
-$mkdir cmake-build-debug
+
 
 The directory structure is:
-cmakefile.txt cmake-build-debug/ src/
+build/ src/ CMakeList.txt README.md
 
 
-$cd cmamke-build-debug
+$cd build
 $cmake ..
 $make
 $cd src
