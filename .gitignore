@@ -1,8 +1,9 @@
 .idea
+#*~
 
 # exclude everything
-cmake-build-debug/*
+#cmake-build-debug/*
 
 # exception to the rule
-!cmake-build-debug/.gitkeep
+#!cmake-build-debug/.gitkeep
 
