@@ -17,6 +17,7 @@
 
 #include <vector>
 #include <iostream>
+#include <chrono>
 #include <getopt.h>
 
 #include "FileChunkDownloader.h"
@@ -218,6 +219,8 @@ int main(int argc, char *argv[]) {
     // before start thread, open the buffer
     writer.openBuffer();
 
+    auto startTime = std::chrono::system_clock::now();
+
     // create and start thread
     std::cout << "create thread to pull file chunk" << std::endl;
     try {
@@ -236,18 +239,23 @@ int main(int argc, char *argv[]) {
         threads[i].join();
     }
 
-    // metrics report
-    std::cout << std::endl;
-    std::cout << "Final report:" << std::endl;
-    if (size < fileSize) {
-        std::cout << "only pull " << size << " byte, even the file has " << fileSize << " byte" << std::endl;
-    } else {
-        std::cout << "the file has only " << fileSize << " byte, so we can only pull this size" << std::endl;
-    }
-
     // clean up
     writer.closeBuffer();
+
+    // metrics report
+    std::cout << std::endl;
+    std::cout << "Metrics report:" << std::endl;
+    if (size < fileSize) {
+        std::cout << "Only pull " << size << " byte, actually the file has " << fileSize << " byte" << std::endl;
+    } else {
+        std::cout << "The file has only " << fileSize << " byte, so we can only pull this size" << std::endl;
+    }
     std::cout << "Received url file byte " << writer.getReceiveByte() << std::endl;
+
+    auto endTime = std::chrono::system_clock::now();
+    std::cout << "During in millisecond: " <<
+              std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << std::endl;
+
 
     delete managerPtr;
 
