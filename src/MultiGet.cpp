@@ -228,5 +228,7 @@ int main(int argc, char *argv[]) {
     writer.closeBuffer();
     std::cout << "Received url file byte " << writer.getReceiveByte() << std::endl;
 
+    delete managerPtr;
+
     return 0;
 }
