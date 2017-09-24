@@ -81,36 +81,3 @@ double FileChunkDownloader::getFileSize()
     curl_easy_cleanup(curl);
     return cl;
 }
-
-
-
-
-/*
-int FileChunkDownloader::curlWriteData(char *data, size_t size, size_t nmemb, void * j)
-{
-    if (j == nullptr)
-    {
-        return 0;
-    }
-
-    FileChunkDownloader * job = static_cast<FileChunkDownloader *>(j);
-    char outfilename[FILENAME_MAX] = "384MB.jar_";
-    strcat(outfilename, name_.c_str());
-    FILE *fp = fopen(outfilename,"wb");
-
-   // job->data.insert(job->data.end(), data, data + size * nmemb);
-    size_t written = fwrite(data, size, nmemb, fp);
-    fclose(fp);
-
-    return size * nmemb;
-}
-*/
-/*
-static int xferinfo(void *p,
-                    curl_off_t dltotal, curl_off_t dlnow,
-                    curl_off_t ultotal, curl_off_t ulnow)
-{
-    FileChunkDownloader *myp = static_cast<FileChunkDownloader *>(p);
-    return 0;
-}
-*/

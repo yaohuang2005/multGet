@@ -18,9 +18,6 @@ public:
     size_t writeFile(void *ptr, size_t size, size_t nmemb);
 
 private:
-  //  FileChunkDownloader(const FileChunkDownloader&) = delete;
-  //  FileChunkDownloader& operator=(const FileChunkDownloader&) = delete;
-
     int workerID_;
     int base_;
     int offset_;
@@ -32,11 +29,3 @@ private:
 
 
 #endif //MULTIGET_FILECHUNKDOWNLOADER_H
-
-
-/*
-    int curlWriteData(char *data, size_t size, size_t nmemb, void * j);
-    int curlDownloadInfo(void * j,
-                     curl_off_t dltotal, curl_off_t dlnow,
-                     curl_off_t ultotal, curl_off_t ulnow);
-*/
