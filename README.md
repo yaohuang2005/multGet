@@ -91,6 +91,7 @@ The #3 thread is writing 5415 byte to buffer
 Final report:
 only pull 4194304 byte, even the file has 402653352 byte
 Received url file byte 4194304
+During in millisecond: 1061
 
 Process finished with exit code 0
 
@@ -110,6 +111,7 @@ The #2 thread is writing 1422 byte to buffer
 Final report:
 the file has only 5689 byte, so we can only pull this size
 Received url file byte 5689
+During in millisecond: 208
 
 
 You can verify the file content with the content by:
