@@ -31,8 +31,8 @@ void printHelp(int rc)
 void processArgs(int argc, char** argv, Configuration &config)
 {
     std::string url = "";
-    std::string fileName = "receivedFile";
-    long size = 4 * ONE_MB;
+    std::string fileName = "receivedFile";   //default
+    long size = 4 * ONE_MB;                  //maximum size to pull
 
     const char* const short_opts = "u:o:s:h";
     const option long_opts[] = {
