@@ -138,7 +138,7 @@ static void signalInit()
 }
 
 int main(int argc, char *argv[]) {
-
+    // prepare configuration
     processArgs(argc, argv, config);
     std::string& url = config.getUrl();
     std::string& fileName = config.getFileName();
@@ -158,6 +158,7 @@ int main(int argc, char *argv[]) {
     auto fileChunkDownloaderHead = std::unique_ptr<FileChunkDownloader>(
             new FileChunkDownloader(url, workerID, writer));
 
+    // get the file size, also verify url correction
     long fileSize;
     try {
         fileSize = fileChunkDownloaderHead->getFileSize();
@@ -174,6 +175,7 @@ int main(int argc, char *argv[]) {
     }
     std::cout << "To get url file size is " << size << std::endl;
 
+    // prepare chunk size for every chunkdownloader instance
     if (size > 0) {
         int base = 0;
         if (size > 4 * ONE_KB ) {  // file size > 4KB... or even > 4MB
@@ -216,6 +218,7 @@ int main(int argc, char *argv[]) {
     // before start thread, open the buffer
     writer.openBuffer();
 
+    // create and start thread
     std::cout << "create thread to pull file chunk" << std::endl;
     try {
         for (int i = 0; i < workers.size(); i++)
@@ -228,10 +231,12 @@ int main(int argc, char *argv[]) {
     }
 
 
+    // wait for threads finish
     for (int i = 0; i < threads.size(); i++){
         threads[i].join();
     }
 
+    // metrics report
     std::cout << std::endl;
     std::cout << "Final report:" << std::endl;
     if (size < fileSize) {
@@ -240,6 +245,7 @@ int main(int argc, char *argv[]) {
         std::cout << "the file has only " << fileSize << " byte, so we can only pull this size" << std::endl;
     }
 
+    // clean up
     writer.closeBuffer();
     std::cout << "Received url file byte " << writer.getReceiveByte() << std::endl;
 
