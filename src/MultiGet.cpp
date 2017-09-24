@@ -154,8 +154,6 @@ int main(int argc, char *argv[]) {
     /* Signal handler */
     signalInit();
 
-    // for test only
-    //url = "http://www.tehhayley.com/blog/2012/partial-http-downloads-with-curl/";
     int workerID = 0;
     auto fileChunkDownloaderHead = std::unique_ptr<FileChunkDownloader>(
             new FileChunkDownloader(url, workerID, writer));
@@ -168,13 +166,13 @@ int main(int argc, char *argv[]) {
         _exit(EXIT_FAILURE);
     }
 
-    std::cout << "The url file size is " << size << std::endl;
     if (size < fileSize) {
         std::cout << "only pull " << size << " byte, even the file has " << fileSize << " byte" << std::endl;
     } else {
         std::cout << "the file has only " << fileSize << " byte, so we can only pull this size" << std::endl;
         size = fileSize;
     }
+    std::cout << "To get url file size is " << size << std::endl;
 
     if (size > 0) {
         int base = 0;

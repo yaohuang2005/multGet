@@ -56,23 +56,20 @@ $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o receivedFile
 $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o receivedFile -s 1024
 
 
-Integration Test 1 result:
-./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o test.txt
-.
-.
-.
+Integration test 1:
+
+multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o test.txt
+URL set to: http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar
+Output file set to: test.txt
 only pull 4194304 byte, even the file has 402653352 byte
+To get url file size is 4194304
 create thread to pull file chunk
-The #0 thread is writing 5276 byte to buffer
-The #0 thread is writing 4344 byte to buffer
-The #0 thread is writing 5792 byte to buffer
-The #0 thread is writing 1448 byte to buffer
-The #0 thread is writing 4344 byte to buffer
-The #0 thread is writing 1448 byte to buffer
-The #0 thread is writing 1448 byte to buffer
-The #0 thread is writing 4344 byte to buffer
-The #0 thread is writing 2896 byte to buffer
-The #0 thread is writing 4344 byte to buffer
+The #2 thread is writing 3833 byte to buffer
+The #2 thread is writing 7240 byte to buffer
+The #3 thread is writing 4344 byte to buffer
+The #3 thread is writing 1448 byte to buffer
+The #2 thread is writing 5792 byte to buffer
+The #1 thread is writing 1448 byte to buffer
 .
 .
 .
@@ -87,6 +84,23 @@ only pull 4194304 byte, even the file has 402653352 byte
 Received url file byte 4194304
 
 Process finished with exit code 0
+
+
+Integration test 2:
+
+WTL-EN-EEG8WL:src yhuang$ ./multiGet -u http://www.tehhayley.com/blog/2012/partial-http-downloads-with-curl/
+URL set to: http://www.tehhayley.com/blog/2012/partial-http-downloads-with-curl/
+the file has only 5689 byte, so we can only pull this size
+To get url file size is 5689
+create thread to pull file chunk
+The #0 thread is writing 1422 byte to buffer
+The #3 thread is writing 1423 byte to buffer
+The #1 thread is writing 1422 byte to buffer
+The #2 thread is writing 1422 byte to buffer
+
+Final report:
+the file has only 5689 byte, so we can only pull this size
+Received url file byte 5689
 
 
 ```
