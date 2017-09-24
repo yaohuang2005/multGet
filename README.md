@@ -40,4 +40,38 @@ $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar
 $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o receivedFile
 $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o receivedFile -s 1024
 
+
+Test result:
+./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o test.txt
+.
+.
+.
+only pull 4194304 byte, even the file has 402653352 byte
+create thread to pull file chunk
+The #0 thread is writing 5276 byte to buffer
+The #0 thread is writing 4344 byte to buffer
+The #0 thread is writing 5792 byte to buffer
+The #0 thread is writing 1448 byte to buffer
+The #0 thread is writing 4344 byte to buffer
+The #0 thread is writing 1448 byte to buffer
+The #0 thread is writing 1448 byte to buffer
+The #0 thread is writing 4344 byte to buffer
+The #0 thread is writing 2896 byte to buffer
+The #0 thread is writing 4344 byte to buffer
+.
+.
+.
+The #3 thread is writing 4344 byte to buffer
+The #3 thread is writing 2896 byte to buffer
+The #3 thread is writing 2896 byte to buffer
+The #3 thread is writing 5792 byte to buffer
+The #3 thread is writing 5415 byte to buffer
+
+Final report:
+only pull 4194304 byte, even the file has 402653352 byte
+Received url file byte 4194304
+
+Process finished with exit code 0
+
+
 ```
