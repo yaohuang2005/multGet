@@ -32,7 +32,7 @@ Since this is a simple application,
 
 Feature:
 plus all requirements from the document, this application also has,
-1. input verification (url connection detect, size > 0)
+1. input validation (url connection detect, size > 0)
 2. performance report
 
 
