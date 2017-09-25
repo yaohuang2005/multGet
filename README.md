@@ -64,6 +64,7 @@ $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar
 $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o receivedFile
 $./multiGet -u http://5d9a03a0.bwtest-aws.pravala.com/384MB.jar -o receivedFile -s 1024
 
+( -u <url> -o <outputFileName> -s <fileSize>  )
 
 Integration test 1:
 
