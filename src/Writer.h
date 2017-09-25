@@ -26,7 +26,7 @@
 // a singleton writer
 class Writer {
 public:
-    static Writer& getInstance(std::string &fileName) {
+    static Writer& getInstance(const std::string &fileName) {
         static Writer s(fileName);
         return s;
     }
@@ -37,12 +37,12 @@ public:
     int getReceiveByte();
 
 private:
-    Writer(std::string &fileName);
+    Writer(const std::string &fileName);
     Writer(const Writer&) = delete;
     Writer& operator=(const Writer&) = delete;
 
     std::mutex mutex_;
-    std::string &fileName_;
+    const std::string &fileName_;
     std::ofstream outfile_;
     int received_;
 

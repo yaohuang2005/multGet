@@ -21,7 +21,7 @@
 
 using namespace std;
 
-Writer::Writer(std::string &fileName) : fileName_(fileName)
+Writer::Writer(const std::string &fileName) : fileName_(fileName)
 {}
 
 void Writer::openBuffer()
